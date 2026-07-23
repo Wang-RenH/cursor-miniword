@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' file: data:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title>Cursor Theme Studio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="assets/app-icon.png" alt="" class="brand-icon" />
+        <div>
+          <div class="brand-title">Theme Studio</div>
+          <div class="brand-sub">Cursor 主题工作室</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="home">总览</button>
+        <button class="nav-item" data-view="market">主题市场</button>
+        <button class="nav-item" data-view="cursors">光标样式</button>
+        <button class="nav-item" data-view="settings">设置</button>
+        <button class="nav-item" data-view="about">关于开源</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <button class="btn btn-danger block" id="btnRestore">恢复原版 UI</button>
+        <button class="btn btn-ghost block" id="btnReenable">重新启用补丁</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="viewTitle">总览</h1>
+          <p class="muted" id="viewDesc">管理 Cursor 主题、光标与安装路径</p>
+        </div>
+        <div class="top-actions">
+          <span class="status-pill" id="statusPill">就绪</span>
+          <button class="btn btn-primary" id="btnApply">应用当前主题</button>
+        </div>
+      </header>
+
+      <!-- HOME -->
+      <section class="view active" id="view-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">MINI WORLD × CURSOR</div>
+            <h2>一键换肤，随时还原</h2>
+            <p>内置迷你世界毛玻璃主题，支持主题市场扩展。指定 Cursor 安装路径后即可安全注入与恢复。</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-goto="market">浏览主题市场</button>
+              <button class="btn btn-secondary" id="btnQuickApply">快速应用推荐主题</button>
+            </div>
+          </div>
+          <div class="hero-art">
+            <img src="assets/mascot.png" alt="mascot" />
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-label">当前主题</div>
+            <div class="stat-value" id="statTheme">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">当前光标</div>
+            <div class="stat-value" id="statCursor">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">主题包数量</div>
+            <div class="stat-value" id="statCount">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Cursor 路径</div>
+            <div class="stat-value small" id="statPath">—</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>快捷操作</h3>
+          </div>
+          <div class="quick-grid">
+            <button class="quick" data-goto="market"><span>主题市场</span><small>切换 / 预览主题包</small></button>
+            <button class="quick" data-goto="cursors"><span>光标样式</span><small>能量剑等自定义指针</small></button>
+            <button class="quick" data-goto="settings"><span>路径设置</span><small>指定 Cursor 安装目录</small></button>
+            <button class="quick danger" id="btnRestore2"><span>一键还原</span><small>恢复 Cursor 原始 UI</small></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARKET -->
+      <section class="view" id="view-market">
+        <div class="toolbar">
+          <input class="search" id="marketSearch" placeholder="搜索主题、标签…" />
+          <div class="seg" id="marketFilter">
+            <button class="seg-btn active" data-filter="all">全部</button>
+            <button class="seg-btn" data-filter="featured">精选</button>
+            <button class="seg-btn" data-filter="installed">已应用</button>
+          </div>
+        </div>
+        <div class="theme-grid" id="themeGrid"></div>
+      </section>
+
+      <!-- CURSORS -->
+      <section class="view" id="view-cursors">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>光标商店</h3>
+            <p class="muted">先内置能量剑，后续更新可继续扩展更多指针包</p>
+          </div>
+          <div class="cursor-grid" id="cursorGrid"></div>
+        </div>
+        <div class="panel tip">
+          <strong>提示</strong>
+          <p>光标热点已对齐刀尖。应用后请在 Cursor 执行 <code>Developer: Reload Window</code>。</p>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" id="view-settings">
+        <div class="panel form">
+          <label>Cursor 安装目录</label>
+          <div class="row">
+            <input id="inputCursorPath" type="text" readonly />
+            <button class="btn btn-secondary" id="btnPickCursor">浏览…</button>
+          </div>
+          <p class="help" id="workbenchHint">将检测 workbench.html 是否存在</p>
+
+          <label>主题 Hub 根目录</label>
+          <div class="row">
+            <input id="inputHubPath" type="text" readonly />
+            <button class="btn btn-secondary" id="btnPickHub">浏览…</button>
+          </div>
+          <p class="help">默认指向迷你世界主题系统（含 Apply / Inject / Disable 脚本）</p>
+
+          <label class="check">
+            <input type="checkbox" id="chkReloadHint" checked />
+            操作后提示 Reload Window
+          </label>
+
+          <div class="row end">
+            <button class="btn btn-primary" id="btnSaveSettings">保存设置</button>
+            <button class="btn btn-ghost" id="btnOpenHub">打开 Hub 文件夹</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="view" id="view-about">
+        <div class="panel about">
+          <img src="assets/mascot.png" class="about-mascot" alt="" />
+          <div>
+            <h3>Cursor Theme Studio</h3>
+            <p>开源主题管理器。内嵌迷你世界主题，支持主题包扩展与光标市场。</p>
+            <ul>
+              <li>主题包格式：<code>themes/&lt;id&gt;/theme.json</code></li>
+              <li>通过 PowerShell 脚本安全注入 / 还原 Cursor UI</li>
+              <li>MIT License — 欢迎贡献新主题包</li>
+            </ul>
+            <div class="row">
+              <button class="btn btn-secondary" id="btnOpenThemes">打开主题包目录</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
