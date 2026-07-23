@@ -1,0 +1,142 @@
+/* Chat / Agent — 轻量层次；不破坏输入框原生布局 */
+
+.monaco-workbench .part.auxiliarybar::before,
+.monaco-workbench .part.sidebar::before {
+  display: none !important;
+  content: none !important;
+}
+
+.monaco-workbench .part.auxiliarybar {
+  background: rgba(255, 252, 250, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.2) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+
+.monaco-workbench .part.auxiliarybar .content {
+  background: transparent !important;
+}
+
+.monaco-workbench .part.auxiliarybar .pane-header,
+.monaco-workbench .part.auxiliarybar .composite.title {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  font-weight: 600 !important;
+}
+
+/* 消息卡片：只装饰明确的 message 节点，不动 input */
+.monaco-workbench .part.auxiliarybar [class*="message-bubble"],
+.monaco-workbench .part.auxiliarybar [class*="ui-message"],
+.monaco-workbench [class*="composer-message"],
+.monaco-workbench [class*="human-message"],
+.monaco-workbench [class*="user-message"],
+.monaco-workbench [class*="ai-message"],
+.monaco-workbench [class*="assistant-message"] {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.monaco-workbench [class*="human-message"],
+.monaco-workbench [class*="user-message"] {
+  background: rgba(255, 245, 238, 0.9) !important;
+  border-color: rgba(232, 140, 77, 0.18) !important;
+}
+
+.monaco-workbench [class*="ai-message"],
+.monaco-workbench [class*="assistant-message"] {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(120, 184, 51, 0.15) !important;
+}
+
+/* 代码块 */
+.monaco-workbench .part.auxiliarybar pre,
+.monaco-workbench .part.auxiliarybar .monaco-codeblock,
+.monaco-workbench .rendered-markdown pre,
+.monaco-workbench .markdown-root pre {
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  background: rgba(248, 250, 252, 0.95) !important;
+}
+
+.monaco-workbench .part.auxiliarybar code,
+.monaco-workbench .rendered-markdown code {
+  border: none !important;
+  border-radius: 4px !important;
+  background: rgba(120, 184, 51, 0.1) !important;
+}
+
+/* ========== 输入区：尽量不改布局，只微调外观 ==========
+   之前给 composer-input / 子 div 加边框+清 padding 导致
+   占位文字跑到边框外面。这里恢复原生盒模型。 */
+
+.monaco-workbench .part.auxiliarybar [class*="composer-input"],
+.monaco-workbench .part.auxiliarybar [class*="PromptInput"],
+.monaco-workbench .part.auxiliarybar [class*="prompt-input"],
+.monaco-workbench .part.auxiliarybar .composer-input-container,
+.monaco-workbench .part.auxiliarybar .chat-input-container,
+.monaco-workbench .part.auxiliarybar .aislash-editor-input,
+.monaco-workbench .part.auxiliarybar .interactive-input-editor {
+  /* 不强制 margin/padding/height，避免文字与边框错位 */
+  box-sizing: border-box !important;
+  backdrop-filter: none !important;
+}
+
+/* 只给最外层提示条轻微圆角，不叠第二层边框 */
+.monaco-workbench .part.auxiliarybar [class*="prompt-form"],
+.monaco-workbench .part.auxiliarybar [class*="PromptForm"],
+.monaco-workbench .part.auxiliarybar [class*="composer-bar"],
+.monaco-workbench .part.auxiliarybar [class*="input-area"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 编辑器内部行：保证行高/定位不被改掉 */
+.monaco-workbench .part.auxiliarybar .monaco-editor,
+.monaco-workbench .part.auxiliarybar .monaco-editor .overflow-guard,
+.monaco-workbench .part.auxiliarybar .monaco-editor .monaco-scrollable-element,
+.monaco-workbench .part.auxiliarybar .monaco-editor .view-lines,
+.monaco-workbench .part.auxiliarybar .monaco-editor .view-line,
+.monaco-workbench .part.auxiliarybar .monaco-editor .inputarea,
+.monaco-workbench .part.auxiliarybar .monaco-editor .cursor,
+.monaco-workbench .part.auxiliarybar textarea {
+  margin: unset !important;
+  padding: unset !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  position: revert !important;
+  transform: none !important;
+  top: revert !important;
+  left: revert !important;
+  line-height: revert !important;
+}
+
+/* 占位符文字跟编辑器同层对齐 */
+.monaco-workbench .part.auxiliarybar .monaco-editor .view-lines,
+.monaco-workbench .part.auxiliarybar [class*="placeholder"],
+.monaco-workbench .part.auxiliarybar .native-edit-context {
+  transform: none !important;
+}
+
+.monaco-workbench .part.auxiliarybar [class*="chip"],
+.monaco-workbench .part.auxiliarybar [class*="pill"] {
+  border-radius: 999px !important;
+}
+
+.monaco-workbench .part.auxiliarybar button,
+.monaco-workbench [class*="composer"] button {
+  border-radius: 8px !important;
+}
+
+.monaco-workbench .part.auxiliarybar .rendered-markdown p,
+.monaco-workbench .part.auxiliarybar .markdown-root p {
+  line-height: 1.55 !important;
+}

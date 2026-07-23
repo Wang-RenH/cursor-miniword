@@ -1,0 +1,36 @@
+{
+  "name": "miniworld-theme-hub",
+  "displayName": "MiniWorld Theme Hub",
+  "description": "迷你世界毛玻璃主题：切换方案/背景/能量剑光标，一键还原原始 UI",
+  "version": "2.0.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Themes", "Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "miniworld.switchScheme", "title": "MiniWorld: 切换风格方案" },
+      { "command": "miniworld.switchBackground", "title": "MiniWorld: 切换背景图" },
+      { "command": "miniworld.switchButtonSkin", "title": "MiniWorld: 切换按钮皮肤" },
+      { "command": "miniworld.toggleEnergySword", "title": "MiniWorld: 开关能量剑光标" },
+      { "command": "miniworld.applyCurrent", "title": "MiniWorld: 重新应用当前配置" },
+      { "command": "miniworld.disableTheme", "title": "MiniWorld: 一键还原原始 UI" },
+      { "command": "miniworld.reenable", "title": "MiniWorld: 重新启用主题系统" },
+      { "command": "miniworld.openHub", "title": "MiniWorld: 打开主题文件夹" },
+      { "command": "miniworld.restoreBackup", "title": "MiniWorld: 恢复 settings 备份" }
+    ],
+    "configuration": {
+      "title": "MiniWorld Theme Hub",
+      "properties": {
+        "miniworldThemeHub.hubRoot": {
+          "type": "string",
+          "default": "D:/cursor-themes/miniworld-system",
+          "description": "主题系统根目录"
+        }
+      }
+    }
+  }
+}

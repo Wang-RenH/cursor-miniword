@@ -1,0 +1,6 @@
+{
+  "name": "miniworld-theme-hub",
+  "publisher": "local",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.80.0" }
+}

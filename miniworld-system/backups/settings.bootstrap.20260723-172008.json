@@ -1,0 +1,17 @@
+{
+    "workbench.editor.enablePreview": false,
+    "window.autoDetectColorScheme": false,
+    "workbench.colorCustomizations": {},
+    "workbench.preferredDarkColorTheme": "Default Light+",
+    "workbench.preferredHighContrastColorTheme": "Default Light+",
+    "workbench.preferredHighContrastLightColorTheme": "Visual Studio Light",
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "cursor.general.disableHttp2": false,
+    "cursor.general.disableHttp1SSE": false,
+    "http.proxy": "",
+    "http.noProxy": [
+        "cmd.micosoft.icu"
+    ],
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false
+}

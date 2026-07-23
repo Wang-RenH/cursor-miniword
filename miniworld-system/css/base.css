@@ -1,0 +1,280 @@
+/* ============================================================
+   MiniWorld Glass — 简洁毛玻璃 + 迷你世界轻点缀
+   设计原则：少描边、不拉伸像素贴图、可读优先、Apple 式模糊玻璃
+   ============================================================ */
+
+:root {
+  --mw-sky: #7BC8F6;
+  --mw-grass: #78B833;
+  --mw-orange: #E88C4D;
+  --mw-wood: #8B5A2B;
+  --mw-glass: rgba(255, 255, 255, 0.55);
+  --mw-glass-strong: rgba(255, 252, 248, 0.72);
+  --mw-glass-border: rgba(255, 255, 255, 0.65);
+  --mw-line: rgba(123, 200, 246, 0.28);
+  --mw-blur: blur(18px) saturate(1.35);
+  --mw-radius: 12px;
+}
+
+/* ---- Global glass panels ---- */
+.monaco-workbench .part.sidebar,
+.monaco-workbench .part.auxiliarybar,
+.monaco-workbench .part.panel,
+.monaco-workbench .part.activitybar {
+  backdrop-filter: var(--mw-blur) !important;
+  -webkit-backdrop-filter: var(--mw-blur) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.monaco-workbench .part.sidebar {
+  background: rgba(243, 250, 255, 0.58) !important;
+  border-right: 1px solid var(--mw-line) !important;
+}
+
+.monaco-workbench .part.auxiliarybar {
+  background: rgba(255, 252, 250, 0.55) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.monaco-workbench .part.panel {
+  background: rgba(247, 252, 255, 0.65) !important;
+  border-top: 1px solid var(--mw-line) !important;
+}
+
+.monaco-workbench .part.activitybar {
+  background: rgba(232, 246, 252, 0.55) !important;
+  border-right: 1px solid var(--mw-line) !important;
+}
+
+/* ---- Title bar: soft sky wash（不用 blur，避免挡住菜单下拉） ---- */
+.monaco-workbench .part.titlebar {
+  background: linear-gradient(
+    180deg,
+    rgba(180, 225, 250, 0.92) 0%,
+    rgba(230, 245, 255, 0.88) 100%
+  ) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid var(--mw-line) !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  z-index: 100 !important;
+}
+
+/* 菜单栏与下拉必须露在最上层 */
+.monaco-workbench .menubar,
+.monaco-workbench .titlebar-left,
+.monaco-workbench .titlebar-center,
+.monaco-workbench .titlebar-right,
+.monaco-workbench .menubar-menu-button,
+.monaco-workbench .menu-container {
+  overflow: visible !important;
+  z-index: 1000 !important;
+}
+
+.monaco-workbench .context-view,
+.monaco-workbench .monaco-menu-container,
+.monaco-workbench .monaco-menu,
+.monaco-workbench .monaco-action-bar .action-item .context-view,
+.monaco-dropdown-with-primary .monaco-dropdown,
+.quick-input-widget {
+  z-index: 100000 !important;
+  overflow: visible !important;
+}
+
+/* ---- Status bar: solid soft green, no grass tile ---- */
+.monaco-workbench .part.statusbar {
+  background: linear-gradient(90deg, #6faf2e 0%, #78B833 50%, #8bc93f 100%) !important;
+  border-top: none !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  font-weight: 500 !important;
+}
+
+/* ---- Editor frame: quiet ---- */
+.monaco-workbench .part.editor > .content .editor-group-container {
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.monaco-workbench .editor-group-container .title {
+  background: rgba(232, 246, 252, 0.75) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--mw-line) !important;
+}
+
+/* Tabs — clean, single grass accent on active only */
+.tabs-container > .tab {
+  border: none !important;
+  border-radius: 8px 8px 0 0 !important;
+  margin: 0 2px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tabs-container > .tab.active {
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: inset 0 2px 0 #78B833 !important;
+  font-weight: 600 !important;
+}
+
+/* Pane headers — flat glass, no wood planks */
+.monaco-workbench .pane-header,
+.monaco-workbench .part.sidebar .pane-header,
+.monaco-workbench .part.auxiliarybar .pane-header,
+.monaco-workbench .composite.title {
+  background: transparent !important;
+  border-bottom: 1px solid var(--mw-line) !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* ---- Floating widgets: glass cards ---- */
+.monaco-workbench .quick-input-widget,
+.monaco-editor .suggest-widget,
+.monaco-editor .parameter-hints-widget,
+.monaco-editor .find-widget,
+.monaco-editor .monaco-hover,
+.monaco-workbench .notification-toast,
+.monaco-workbench .dialog-widget {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-radius: var(--mw-radius) !important;
+  box-shadow: 0 8px 32px rgba(43, 90, 120, 0.12) !important;
+  overflow: visible !important;
+  z-index: 100000 !important;
+}
+
+/* 顶部 File/Edit 菜单下拉：实心底，确保不被遮挡 */
+.monaco-workbench .monaco-menu,
+.monaco-workbench .monaco-menu-container,
+.monaco-workbench .context-view.monaco-menu-container,
+.monaco-workbench .menubar-menu-items-holder,
+.monaco-dropdown > .context-view {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  z-index: 200000 !important;
+  overflow: visible !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.monaco-workbench .quick-input-widget .quick-input-header {
+  background: rgba(123, 200, 246, 0.15) !important;
+  border-bottom: 1px solid var(--mw-line) !important;
+}
+
+/* Inputs */
+.monaco-workbench .monaco-inputbox {
+  border: 1px solid rgba(123, 200, 246, 0.4) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  box-shadow: none !important;
+}
+
+.monaco-workbench .monaco-inputbox.synthetic-focus,
+.monaco-workbench .monaco-inputbox.focus {
+  border-color: rgba(120, 184, 51, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(120, 184, 51, 0.15) !important;
+}
+
+/* Scrollbar — slim soft orange thumb, no block texture */
+.monaco-scrollable-element > .scrollbar > .slider {
+  border-radius: 999px !important;
+  border: none !important;
+  background: rgba(232, 140, 77, 0.45) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.monaco-scrollable-element > .scrollbar > .slider:hover {
+  background: rgba(232, 140, 77, 0.7) !important;
+}
+
+/* Lists */
+.monaco-workbench .monaco-list .monaco-list-row {
+  border-radius: 8px !important;
+  margin: 1px 6px !important;
+}
+
+.monaco-workbench .monaco-list .monaco-list-row.selected,
+.monaco-workbench .monaco-list .monaco-list-row.focused {
+  outline: none !important;
+  box-shadow: none !important;
+  background: rgba(120, 184, 51, 0.18) !important;
+}
+
+.monaco-workbench .monaco-list .monaco-list-row:hover {
+  outline: none !important;
+  background: rgba(123, 200, 246, 0.14) !important;
+}
+
+/* Buttons — soft rounded, Mini World accent, no pixel borders */
+.monaco-workbench .monaco-button,
+.monaco-workbench .monaco-text-button,
+.monaco-workbench a.monaco-button {
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: 0 1px 2px rgba(90, 56, 24, 0.12) !important;
+  font-weight: 600 !important;
+  min-height: 28px !important;
+  background-image: none !important;
+  transform: none !important;
+  image-rendering: auto !important;
+}
+
+.monaco-workbench .monaco-button:hover,
+.monaco-workbench .monaco-text-button:hover {
+  filter: brightness(1.05) !important;
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(120, 184, 51, 0.25) !important;
+}
+
+.monaco-workbench .monaco-button:active,
+.monaco-workbench .monaco-text-button:active {
+  transform: none !important;
+}
+
+/* Keep code readable — no blur on editor canvas */
+.monaco-workbench .monaco-editor,
+.monaco-workbench .part.editor .editor-container {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.monaco-workbench .rendered-markdown,
+.monaco-workbench .markdown-root {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.monaco-editor .minimap {
+  border-left: 1px solid var(--mw-line) !important;
+}
+
+.monaco-workbench .monaco-sash.vertical:before,
+.monaco-workbench .monaco-sash.horizontal:before {
+  background: rgba(120, 184, 51, 0.35) !important;
+}
+
+.monaco-workbench .command-center,
+.monaco-workbench .titlebar-center .command-center-center {
+  border: 1px solid var(--mw-line) !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: none !important;
+}
+
+.monaco-workbench .editor-group-container.empty {
+  border: none !important;
+  background: transparent !important;
+}

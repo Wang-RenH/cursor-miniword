@@ -1,0 +1,24 @@
+/* Soft grass-accent glass buttons */
+.monaco-workbench .monaco-button,
+.monaco-workbench .monaco-text-button,
+.monaco-workbench a.monaco-button {
+  border-radius: 10px !important;
+  border: none !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(168, 217, 106, 0.35),
+    rgba(255, 255, 255, 0)
+  ) !important;
+  box-shadow: 0 1px 3px rgba(95, 168, 37, 0.2) !important;
+  font-weight: 600 !important;
+  image-rendering: auto !important;
+}
+
+.tabs-container > .tab.active {
+  box-shadow: inset 0 2px 0 #78B833 !important;
+  background-image: none !important;
+}
+
+.monaco-workbench .part.statusbar {
+  background-image: none !important;
+}

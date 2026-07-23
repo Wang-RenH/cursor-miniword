@@ -1,0 +1,9 @@
+﻿{
+    "scheme":  "glass-mini",
+    "background":  "sunny-town-hero.png",
+    "buttonSkin":  "chunky-block",
+    "hubRoot":  "D:/cursor-themes/miniworld-system",
+    "version":  2,
+    "energySword":  true,
+    "enabled":  true
+}

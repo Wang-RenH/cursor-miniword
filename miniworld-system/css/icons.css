@@ -1,0 +1,11 @@
+/* 默认不强制替换为像素图标（避免廉价感）。
+   仅轻微统一活动栏视觉；如需像素图标可把 state.usePixelIcons 打开后扩展。 */
+
+.monaco-workbench .activitybar .action-label.codicon {
+  font-size: 22px !important;
+  opacity: 0.92;
+}
+
+.monaco-workbench .activitybar .action-item.checked .action-label {
+  opacity: 1;
+}

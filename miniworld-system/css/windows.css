@@ -1,0 +1,23 @@
+/* Extra chrome — keep minimal */
+
+.monaco-editor .peekview-widget {
+  border: 1px solid rgba(120, 184, 51, 0.35) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 28px rgba(43, 90, 120, 0.12) !important;
+}
+
+.monaco-workbench .monaco-toolbar .action-label {
+  border-radius: 8px !important;
+}
+
+.monaco-workbench .monaco-toolbar .action-item:hover .action-label {
+  box-shadow: none !important;
+  background: rgba(120, 184, 51, 0.15) !important;
+}
+
+.monaco-workbench .notifications-list-container .notification-list-item {
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 6px 24px rgba(43, 90, 120, 0.1) !important;
+}

@@ -1,0 +1,22 @@
+/* Official Mini World energy sword from user pack — tip-left, 32px, hotspot (1,1) */
+:root { --mw-cursor-sword: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARaSURBVFhHzdVbTFN3AMdxYNOo0+EyMgK1LW2Bc3rovaW09bQHKOVSLitYlDkvqMDQsAobWzIl6oPKmC5xAd0cOBddpYB4gw3lIpWLUlcuYVmzDVRYSDR72ovJMrL8lj0scf9XT7d9Hv/n9/2/nOSciIj/g+KB6VPc8MQG8vxfk9M3jbzQErKnQk8sE9PvSQeC0eQmrDh/6IF89gFkwxPI/nEBGXMLUI4GtpK7sMn0z73rmFqC4PRZCI43gRkaATMZAjMa/IDchoWp467A4Z+D2ncVlkNHkNJwBMzAHSiCP0DhD7ST+7AwXBpZyAv8DOZEM1I9+8HUHwTT2w86MAPaH+gi97yztI2ts3ZN/pEXWICsoRGa7ZUQVu+D4kofqMAsJINjfWTDu2zvqN7WHUTeyBwk9Q2Quosh8dSCGhqGeHwWyYMT3WTDO4f3/j7b5Rlk9k/j5R2VkL2xDdSHTVDcn0X8YADS7tsjZMM7pzfQwl2bgu3GJKJcW8EeOgRB7ftQXB+CrP8ehO2Ds2TDu1xfsJ+9+h2Yth7E7fEgsdiN9aXbkdTeC9E345B1+mfIhneZl4IPN14LQXH2Bl4pKoXQno3VJaWgvJch6b2HlJ47jyIiIiLJjk+RzouTv9m/nof8826sL3RB5HBgbUkZ6K4eiK/7Ybp697H48PlVZMibzNbBWIf3W7DDi6BOX0CsswQb0rMQ5XRBee0mEn23kHys5SnV1LaObHmT1XbbntYZhG14EaKjZ/CawwlRejoi80uQe/0WorbsQsaZjmXupDeGbHljO+evMl4MwjH8COKDjYgryIe5fBty6mpgqvMgu9WLbZ1DUB84KiBb3jg+HWnM/XISpX0hSKs92LjFjQy3C/qSAsjL30TS7r0obDr1NE6vX6MyG7Qa1pDFMMxK8p7n4vyop38FV4GUnbVQOHKhyi9C+WdfoLbnJlIrqhGvVkJiVC8nJImhM+kgomRvk3c8t7JjVxZ3n+iFiM2B6a0a1AyNoWFqBrqKPUhgkqHWUNjIpmHFmpV+suWF++OO1Xs/uQM6vwrU65tR5fOhrLkZTF4GSre7ke/kkJXLLjMcs5ZsebP5sM9UfbwTsfI0CDUq6DgTTJweRoMcUokAmlRNM9nwjt3iKZBqWMi1FIpcmSh22lBTvRU0JYJKpwxRFip834a/RccKnlhtRmg1NGhpHGSJMSgosEGtTYQ6Tf2YYcL4GlKsBqGZNYBNN0KjU/rMZrM4zaJ3ymkpWFYBiSwWFqt+SaVSvUS2fHkhiabnLXbrpmcPTXbrzmRaBCWTAJk4Dlar+XuxWLyKNpgVz+74wXEvkkd/MdmNJ2lGCItRC61OiThx/O9yleLXcP89/8GcYdiVakhBXmEWctz5YMxaxBgUt8hdOEXGi179xb3ZiR37K6Eq2wR5+c6H5ChspHp9tIWzTBrYNLgOvIP6iXFYWlt+IndhJ7VaLqTWeeYzvjr/kDt3/hz5/D/1J4RQ/KXpCufdAAAAAElFTkSuQmCC) 1 1, default; }
+
+.monaco-workbench,
+.monaco-workbench .part,
+.monaco-workbench .monaco-button,
+.monaco-workbench .action-label,
+.monaco-workbench .monaco-list-row,
+.monaco-workbench .tab,
+.monaco-workbench .pane-header,
+.monaco-workbench .composite,
+.monaco-workbench .scrollbar,
+.monaco-workbench a,
+.monaco-workbench .codicon,
+.monaco-editor .view-lines,
+.monaco-editor .view-line,
+.monaco-workbench textarea,
+.monaco-workbench input,
+.monaco-workbench .inputarea,
+.monaco-mouse-cursor-text {
+  cursor: var(--mw-cursor-sword) !important;
+}
