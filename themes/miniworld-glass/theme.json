@@ -1,0 +1,27 @@
+{
+  "id": "miniworld-glass",
+  "name": "迷你世界 · 晴空毛玻璃",
+  "version": "2.0.0",
+  "author": "MiniWorld Theme Lab",
+  "description": "简洁毛玻璃 + 迷你世界点缀色。低透明度海报背景、柔和侧栏、干净聊天区，可选能量剑光标。",
+  "tags": ["迷你世界", "毛玻璃", "浅色", "推荐"],
+  "preview": "preview.png",
+  "featured": true,
+  "hubRoot": "D:/cursor-themes/miniworld-system",
+  "scheme": "glass-mini",
+  "defaultCursor": "energy-sword",
+  "cursors": [
+    {
+      "id": "energy-sword",
+      "name": "能量剑",
+      "file": "cursors/energy-sword.png",
+      "hotspot": [1, 1]
+    },
+    {
+      "id": "default",
+      "name": "系统默认",
+      "file": null,
+      "hotspot": null
+    }
+  ]
+}

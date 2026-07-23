@@ -1,60 +1,50 @@
-# 迷你世界 Cursor 主题系统（毛玻璃版）
+﻿# Cursor Theme Studio
 
-根目录：`D:\cursor-themes\miniworld-system`
+开源桌面主题管理器（Electron）。图标使用你提供的恐龙抱 Cursor Logo 形象。
 
-## 设计方向（v2）
+## 功能
 
-- **简洁毛玻璃**：侧栏 / 聊天 / 弹层用 `backdrop-filter`，细线分隔，去掉拉伸像素贴图
-- **迷你世界点缀**：天蓝 / 草绿 / 熊橙作强调色，低透明度海报背景
-- **能量剑光标**：刀尖为点击热点 `(3,3)`，可开关
-- **一键还原**：随时退回原始 Cursor UI
+- **总览**：当前主题 / 光标 / 路径状态，快捷操作
+- **主题市场**：本地 `themes/` 包封装，可切换迷你世界毛玻璃 / 晴空小镇，后续继续加包
+- **光标样式**：能量剑（刀尖热点），可扩展更多
+- **设置**：自定义 Cursor 安装目录、主题 Hub 路径
+- **恢复原版 UI**：一键还原
+- **重新启用补丁**：Cursor 更新后补丁丢失时用
 
-推荐方案：**晴空毛玻璃 `glass-mini`**（默认）
+## 安装包位置
 
-## 命令面板
-
-| 命令 | 作用 |
-|------|------|
-| `MiniWorld: 切换风格方案` | glass-mini / sunny-town / grassland / wooden-village / clear-focus |
-| `MiniWorld: 切换背景图` | `assets/backgrounds` |
-| `MiniWorld: 切换按钮皮肤` | 柔和玻璃按钮变体 |
-| `MiniWorld: 开关能量剑光标` | 开/关自定义光标 |
-| `MiniWorld: 重新应用当前配置` | 重写 settings + 注入 CSS |
-| **`MiniWorld: 一键还原原始 UI`** | 恢复备份 settings + 清除 workbench 注入 |
-| `MiniWorld: 重新启用主题系统` | 更新 Cursor 后补丁失效时用 |
-| `MiniWorld: 打开主题文件夹` | 打开 Hub |
-
-## 如何重新加载
-
-改完后必须：
-
-1. `Ctrl+Shift+P` → **`Developer: Reload Window`**
-2. 若背景没了 → Background Enable/Apply
-
-管理员一键重启用：
-
-```powershell
-powershell -ExecutionPolicy Bypass -File "D:\cursor-themes\miniworld-system\scripts\reenable.ps1"
+```
+D:\cursor-themes\ThemeStudio\release\CursorThemeStudio-Setup-1.0.0.exe
 ```
 
-一键取消主题：
+双击安装后会创建桌面快捷方式 **Cursor Theme Studio**。
 
-```powershell
-powershell -ExecutionPolicy Bypass -File "D:\cursor-themes\miniworld-system\scripts\Disable-Theme.ps1"
+也可直接运行免安装目录：
+
+```
+D:\cursor-themes\ThemeStudio\release\win-unpacked\CursorThemeStudio.exe
 ```
 
-或命令面板：`MiniWorld: 一键还原原始 UI`，然后 Reload Window。
+## 开发
 
-## 能量剑光标
+```bash
+cd D:\cursor-themes\ThemeStudio
+npm install
+npm start
+npm run dist
+```
 
-- 资源：`assets/cursors/energy-sword.png`
-- CSS：`cursor: url(...) 3 3` —— **热点在刀尖**，不是刀柄
-- 关闭：`MiniWorld: 开关能量剑光标`
+## 新增主题包
 
-## 目录摘要
+1. 复制 `themes/miniworld-glass`
+2. 修改 `theme.json`（`id` / `name` / `scheme` / `hubRoot`）
+3. 替换 `preview.png`
+4. 重启 Studio，市场中即可看到
 
-- `schemes/glass-mini` — 默认毛玻璃色板
-- `css/base.css` / `chat.css` — 玻璃 UI（无像素天空条）
-- `css/cursor.css` — 能量剑
-- `scripts/Apply-Theme.ps1` / `Inject-CustomCSS.ps1` / `Disable-Theme.ps1`
-- `backups/` — settings 与 workbench 备份
+主题实际注入仍依赖 Hub：`D:\cursor-themes\miniworld-system` 的 PowerShell 脚本。
+
+## 注意
+
+- 首次应用 / 还原若提示权限，请 **右键管理员运行** Theme Studio
+- 应用后请在 Cursor 执行 `Developer: Reload Window`
+- MIT License

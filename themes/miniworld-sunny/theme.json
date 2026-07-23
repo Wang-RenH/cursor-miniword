@@ -1,0 +1,26 @@
+{
+  "id": "miniworld-sunny",
+  "name": "迷你世界 · 晴空小镇",
+  "version": "1.0.0",
+  "author": "MiniWorld Theme Lab",
+  "description": "海报色板：天蓝 / 草绿 / 熊橙，明亮沉浸风格。",
+  "tags": ["迷你世界", "明亮"],
+  "preview": "preview.png",
+  "featured": false,
+  "hubRoot": "D:/cursor-themes/miniworld-system",
+  "scheme": "sunny-town",
+  "defaultCursor": "energy-sword",
+  "cursors": [
+    {
+      "id": "energy-sword",
+      "name": "能量剑",
+      "file": "cursors/energy-sword.png",
+      "hotspot": [1, 1]
+    },
+    {
+      "id": "default",
+      "name": "系统默认",
+      "file": null
+    }
+  ]
+}
